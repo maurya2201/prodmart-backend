@@ -2,7 +2,7 @@
   "name": "day-eight",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/app.ts",
+  "main": "./build/app.js",
   "scripts": {
     "dev": "nodemon app.js"
   },
