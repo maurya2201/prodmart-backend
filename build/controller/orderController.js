@@ -102,9 +102,10 @@ function emailTemplate(rows) {
 const placeOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         let order = ``;
-        const { uid } = req.body;
-        const findEmail = yield user_1.default.findOne(uid);
-        const email = findEmail === null || findEmail === void 0 ? void 0 : findEmail.email;
+        const { uid } = req.body[0];
+        const _id = uid;
+        const findEmail = yield user_1.default.find({ _id });
+        const email = findEmail[0].email;
         const orders = yield order_1.default.create(req.body);
         if (Array.isArray(orders)) {
             orders.map((element) => {
