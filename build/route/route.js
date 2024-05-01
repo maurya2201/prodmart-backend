@@ -1,0 +1,26 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.viewOrderRouter = exports.updateStateRouter = exports.updatePasswordRouter = exports.orderRouter = exports.forgotPasswordRouter = exports.loginRouter = exports.verifyRouter = exports.userRouter = void 0;
+const express_1 = __importDefault(require("express"));
+const userController_1 = require("../controller/userController");
+const orderController_1 = require("../controller/orderController");
+exports.userRouter = express_1.default.Router();
+exports.verifyRouter = express_1.default.Router();
+exports.loginRouter = express_1.default.Router();
+exports.forgotPasswordRouter = express_1.default.Router();
+exports.orderRouter = express_1.default.Router();
+exports.updatePasswordRouter = express_1.default.Router();
+exports.updateStateRouter = express_1.default.Router();
+exports.viewOrderRouter = express_1.default.Router();
+exports.userRouter.route('/').post(userController_1.registerController).get(userController_1.getUsersController);
+exports.userRouter.route('/:id').put(userController_1.updateUserController).delete(userController_1.deleteUserController).get(userController_1.getUserController);
+exports.verifyRouter.route('/').post(userController_1.userVerification);
+exports.loginRouter.route('/').post(userController_1.loginController);
+exports.forgotPasswordRouter.route('/').post(userController_1.forgotPassword);
+exports.orderRouter.route('/').post(orderController_1.placeOrder);
+exports.updatePasswordRouter.route('/:id').put(userController_1.updatePasswordController);
+exports.updateStateRouter.route('/:id').put(userController_1.updateStateController);
+exports.viewOrderRouter.route('/:id').get(orderController_1.viewOrderController);
