@@ -89,10 +89,11 @@ function emailTemplate(rows:string){
 
 export const placeOrder=async(req:Request,res:Response)=>{
   try{
-    let order=``;
-    const {uid} = req.body;
-    const findEmail = await User.findOne(uid);
-    const email = findEmail?.email;
+    let order:string =``;
+    const {uid} = req.body[0];
+    const _id = uid;
+    const findEmail = await User.find({_id});
+    const email = findEmail[0].email;
     const orders = await Order.create(req.body);
     if(Array.isArray(orders)){
       orders.map((element)=>{
@@ -103,7 +104,7 @@ export const placeOrder=async(req:Request,res:Response)=>{
         <td>${element.quantity}</td>
         </tr>`
       })}
-        mailer(email,emailTemplate(order));
+      mailer(email,emailTemplate(order));
     res.status(200).json({message:"Order placed successfully!"});
   }catch(error){
     res.status(400).json(error);
