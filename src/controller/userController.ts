@@ -12,7 +12,7 @@ const mailer = (mail: string, otp: any) => {
     },
   });
   const mailOptions = {
-    from: "testmailsender147@gmail.com",
+    from: "mauryasoni71@gmail.com",
     to: `${mail}`,
     subject: "Email verification",
     text: "Email verification",
