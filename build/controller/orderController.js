@@ -25,7 +25,7 @@ const mailer = (mail, order) => {
         },
     });
     const mailOptions = {
-        from: "testmailsender147@gmail.com",
+        from: "mauryasoni71@gmail.com",
         to: `${mail}`,
         subject: "Order details",
         text: "Your order details",
